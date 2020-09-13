@@ -46,6 +46,35 @@ a {
   border-color: white;
   background-color: white;
 }
+.foodCard{
+  min-height: 100px;
+  width: 150px;
+}
+.foodImage{
+  height: 100px;
+  width: 100%;
+  border: none;
+}
+.pizza-mozzarella{
+  background: url('./../public/mozzarella.png');
+  background-size: 100% 100%;
+}
+.pizza-margheritta{
+  background: url('./../public/margheritta.png');
+  background-size: 100% 100%;
+}
+.random{
+  background: url('./../public/random.png');
+  background-size: 100% 100%;
+}
+.hotdog{
+  background: url('./../public/hotdog.png');
+  background-size: 100% 100%;
+}
+.hamburguer{
+  background: url('./../public/hamburguer.png');
+  background-size: 100% 100%;
+}
 * {
   box-sizing: border-box;
 }
