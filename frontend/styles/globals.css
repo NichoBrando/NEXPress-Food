@@ -22,7 +22,7 @@ a {
 .hero{
   background: url('./../public/pizza.jpg');
   position: relative;
-  height: 95%;
+  height: 100%;
   background-position: center;
   background-size: cover;
 }

@@ -3,13 +3,16 @@ import Link from 'next/link';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
 import {
-  Collapse,
   Navbar,
   NavbarBrand,
   NavbarToggler,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle
 } from 'reactstrap';
 
 import { connect } from 'react-redux';
@@ -19,21 +22,29 @@ const Header = ({ cart }) => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <div>
-      <Navbar color = "dark">
+      <Navbar color = "dark wrapper">
         <NavbarBrand href="/" className="text-success specialElite">
           NEXPress Food
         </NavbarBrand>
-        <NavbarToggler onClick = {toggle} />
-        <Nav>
-          <NavItem>
-            <NavLink className="text-success">About Us</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className="text-success">Shop</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className="text-success"><ShoppingCart/>{cart.length}</NavLink>
-          </NavItem>
+        <Nav className="px-5 mr-5">
+          <Dropdown isOpen={isOpen} toggle={toggle}>
+            <DropdownToggle caret>
+              <ShoppingCart/>{cart.length}
+              </DropdownToggle>
+            <DropdownMenu className="mr-5">
+              {cart.map((element, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <DropdownItem>
+                      <span> {cart.filter(product => product.title === element.title).reduce((acumulator) => acumulator + 1, 0)}x</span>
+                      <span> {element.title} </span>
+                      <span> {(cart.filter(product => product.title === element.title).reduce((acumulator, element) => element.price + acumulator, 0)).toLocaleString('en-US', { style: 'currency', currency: 'USD' })} </span>
+                    </DropdownItem>
+                  </React.Fragment>
+                )
+              })}
+            </DropdownMenu>
+          </Dropdown>
         </Nav>
       </Navbar>
     </div>

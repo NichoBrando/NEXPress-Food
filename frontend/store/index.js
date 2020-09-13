@@ -2,20 +2,27 @@ import { createStore } from 'redux';
 
 const initial_state = {
   cart: [],
-  selling: [
-    {title: "Hot Dog", price: 5.49, photo: 'hotdog'},
-    {title: "Hamburger", price: 5.00, photo: 'hamburguer'},
-    {title: "Pizza Mozzarella", price: 20.99, photo: 'pizza-mozzarella'},
-    {title: "Random Pizza", price: 20.99, photo: 'random'},
-    {title: "Pizza Margheritta", price: 20.99, photo: 'pizza-margheritta'},
-  ]
+  selling: []
 }
 
 function reducer(state = initial_state, action){
-  console.log(1)
+  if(action.type == "newItem"){
+    return {...state, selling: action.items};
+  }
   if(action.type == "ADD"){
-    console.log(state.cart)
-    return { ...state, cart: [...state.cart, action.item] }
+    return { ...state, cart: [...state.cart, action.item ] };
+  }
+  if(action.type == "remove"){
+    let newState = {...state};
+    let index = newState.cart.indexOf(action.item);
+    if(index === -1){
+      return { ...state, cart: state.cart };
+    }
+    let cartHalf = newState.cart.slice(0, index);
+    let otherCartHalf = newState.cart.slice(index + 1);
+    let newCart = cartHalf.concat(otherCartHalf);
+    console.log(cartHalf);
+    return {...state, cart: newCart };
   }
   return state;
 }

@@ -13,8 +13,9 @@ const showProducts = (selling, items) => {
   }
 }
 function Shop({selling, dispatch}) {
-  useEffect(() => {
-    const items = axios.get('/_api/getFoods').then(res => res.data);
+  useEffect(async () => {
+    const items = await axios.get('http://localhost:5000/api/getFoods').then(res => res.data);
+    console.log(items);
     dispatch(showProducts(selling, items));
   }, [])
   return (
