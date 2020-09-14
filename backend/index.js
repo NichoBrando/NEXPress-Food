@@ -40,7 +40,7 @@ async function createFoods(req, res){
 async function alterPhoto(req, res){
   var updated = await Food.findOneAndUpdate({title: req.body.title}, 
     {photo: req.body.photo}, {useFindAndModify: false});
-  return res.send({photo: req.photo});
+  return res.send({photo: req.body.photo});
 }
 // Add headers
 app.use(function (req, res, next) {
