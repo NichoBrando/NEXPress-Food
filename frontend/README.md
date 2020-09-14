@@ -1,30 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# frontend
 
-## Getting Started
+![buying](https://github.com/NichoBrando/Presentation/blob/master/buying.png)
 
-First, run the development server:
+this frontend has been made with npx create-next-app command.
+NextJS is a framework for server side rendering, with ReactJS. I choose to use NextJS, because the foods items, that need to be indexed.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+If you start the project, the first page that will appear for you, is this:
+![index](https://github.com/NichoBrando/Presentation/blob/master/indexPage.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To go to buying foods, you will need to click on `Start Buys`
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Things to update or create
+I will work more in this project, to add some functions to it, like:
+* Filtered cart
+* Payment method with GoGerency (My fictional bank, that i'm currently building)
+* Add more photos.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![toUpdate](https://github.com/NichoBrando/Presentation/blob/master/toUpdate.png)
