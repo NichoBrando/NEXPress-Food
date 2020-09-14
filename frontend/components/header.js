@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
 import {
   Navbar,
   NavbarBrand,
-  NavbarToggler,
   Nav,
-  NavItem,
-  NavLink,
   Dropdown,
   DropdownItem,
   DropdownMenu,

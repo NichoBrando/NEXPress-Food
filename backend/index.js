@@ -12,19 +12,17 @@ mongoose.connect('mongodb://localhost:27017/nexpress',
 
 const Food = require('./models/food');
 
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-
+//Send all Foods to clientside
 async function getFoods(req, res){
   var foodData = await Food.find({}, {_id: 0, __v: 0}).exec();
   return res.send(foodData);
 }
-
+//erase all Foods data
 async function clearFoods(req, res){
   var erasedData = await Food.deleteMany({});
   return res.send({'Data erased': erasedData.deletedCount});
 }
-
+//Create a food, with a random photo
 async function createFoods(req, res){
   try{
     var product = req.body;
@@ -36,31 +34,21 @@ async function createFoods(req, res){
     return res.send({"Status": "Error"})
   }
 }
-
+//Modify food's photo
 async function alterPhoto(req, res){
   var updated = await Food.findOneAndUpdate({title: req.body.title}, 
     {photo: req.body.photo}, {useFindAndModify: false});
   return res.send({photo: req.body.photo});
 }
-// Add headers
+
 app.use(function (req, res, next) {
-
-  // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-
-  // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
-
-  // Pass to next layer of middleware
   next();
 });
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.post("/", (req, res) => {
